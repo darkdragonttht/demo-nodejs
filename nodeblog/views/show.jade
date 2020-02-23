@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    .post
+        h1 #{post.title}
+        p.meta Posted in
+            a(href='/categories/show/#{post.category}') #{post.category} by #{post.author} on #{moment(post.date).format("DD/MM/YYYY")}
+        img(src='/images/uploads/#{post.mainimage}')
+        !=post.body
+        hr
+        br
+        if post.comment
+            h3 Bình Luận
+            each comments, i in post.comment
+                .comment
+                    p.comment-name #{comments.name}
+                    p.comment-text #{comments.body}
+            br
+        h3 Bình luận bài viết
+        ul.errors
+            if errors
+                each error, i in errors
+                    li.alert.alert-danger #{error.msg}
+        form.comment-form(method='post', action='/posts/show/addcomment')
+            input(name='postid', type='hidden', value='#{post._id}')
+            .form-group
+                label Name
+                input.form-control(type='text', name='name')
+            .form-group
+                label Email
+                input.form-control(type='email', name='email')
+            .form-group
+                label Name
+                textarea.form-control(name='body', id='body')
+            br
+            input.btn.btn-default(name='submit', type='submit', value='Thêm bình luận')

@@ -1,0 +1,19 @@
+body {
+    padding-top: 50px;
+}
+
+.jumbotron {
+    background: url('../images/84631.jpg') no-repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+footer {
+    background: #f4f4f4;
+    height: 40px;
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 10px;
+    overflow: auto;
+}
